@@ -84,7 +84,7 @@ export default function normalizeColumns(columns: Array<Column>, tableIDSeed: nu
         showOverflowTooltip: false,
         align: 'left',
         filterMultiple: true
-      }, column, {
+      }, column, defaults[column.type || 'default'], forced[column.type], {
         columnKey: column.columnKey || id,
         width,
         minWidth,
@@ -97,7 +97,7 @@ export default function normalizeColumns(columns: Array<Column>, tableIDSeed: nu
         filterOpened: false,
         filteredValue: column.filteredValue || null,
         filterPlacement: column.filterPlacement || 'bottom',
-      }, defaults[column.type || 'default'], forced[column.type]);
+      });
     }
 
     return _column;
